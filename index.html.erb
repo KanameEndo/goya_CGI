@@ -33,10 +33,10 @@
     <input type="text" name="give" value="<%= data.join(' ') %>">
     <input type="submit" name="送信">
    </form>
-   <% result = connection.exec("select quality from crops WHERE quality=false;") %>
+   <% result = connection.exec("select * from crops where quality=false;") %>
    <% data = [] %>
    <% result.each do |record| %>
-     <% data << "品質 : #{record["quality"]}" %>
+     <% data << "品質 : #{record["quality"]} 大きさ:#{record["length"]} 重さ:#{record["weight"]} 譲渡先:#{record["give_for"]} 日付:#{record["date"]}" %>
    <% end %>
    <form action="badquality.cgi" method="POST">
     下記のボタンを押すと、品質が悪いものの情報ページに飛びます。<br><br>
